@@ -1,0 +1,26 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "macOS",
+            "includePath": [
+                "/opt/homebrew/Cellar/llvm@16/16.0.6_1/include/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [],
+            "compilerPath": "/opt/homebrew/opt/llvm@16/bin/clang++",
+            "cppStandard": "c++17",
+            "browse": {
+                "path": [
+                    "/opt/homebrew/Cellar/llvm@16/16.0.6_1/include",
+                    "/opt/homebrew/opt/llvm@16/include"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "compilerArgs": [
+                "-lLLVM",
+                "-lunwind"
+            ]
+        }
+    ]
+}

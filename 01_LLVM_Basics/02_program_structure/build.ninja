@@ -1,0 +1,28 @@
+# Define the compiler and flags
+CC = /opt/homebrew/opt/llvm@16/bin/clang++
+CXXFLAGS = -std=c++17
+INCLUDE_DIRS = -I/opt/homebrew/Cellar/llvm@16/16.0.6_1/include
+LIBRARY_DIRS = -L/opt/homebrew/Cellar/llvm@16/16.0.6_1/lib
+LIBRARIES = -lLLVM -lunwind
+SYSROOT = -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/
+
+# Source file and output object file
+SRC = src/eva-llvm.cpp
+OBJ = eva-llvm.o
+
+# Rule to build object file
+rule compile
+  command = $CC $CXXFLAGS $INCLUDE_DIRS $LIBRARY_DIRS $LIBRARIES $SYSROOT $SRC -o $OBJ 
+
+# Build the object file
+build $OBJ: compile
+
+# Target for linking (if you plan to link the object to an executable)
+# Example: To link the object to create an executable
+# EXE = my_program
+# rule link
+#   command = $CC $OBJ $LIBRARY_DIRS $LIBRARIES -o $EXE
+#   description = Linking $OBJ to create $EXE
+
+# Build the final executable (if required)
+# build $EXE: link $OBJ

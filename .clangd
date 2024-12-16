@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [-I/opt/homebrew/Cellar/llvm/19.1.5/include]

@@ -1,0 +1,28 @@
+# emit llvm ir
+clang++ -S -emit-llvm test.cpp
+
+# create object file from the llvm IR
+clang++ -o test test.ll
+
+# execute the object file
+./test ; echo $?
+
+# use lvm interpreter to execute the llvm IR
+lli test.ll
+echo $?
+
+# use llvm assembler to create the bitcode
+llvm-as test.ll
+
+# llvm disassembler to reproduce the llvm IR
+llvm-dis test.bc -o test-2.ll
+
+# emit assembly code and use it to generate the executable
+clang++ -S test.ll 
+clang++ -o test test.s 
+./test ; echo $?
+
+
+
+
+
